@@ -1,13 +1,11 @@
 pub struct Stack<T> {
     stack: Vec<T>,
-    max_size: usize,
 }
 
 impl<T> Stack<T> {
-    pub fn new(max_size: usize) -> Stack<T> {
+    pub fn new() -> Stack<T> {
         Stack {
-            stack: Vec::with_capacity(max_size),
-            max_size,
+            stack: Vec::new(),
         }
     }
 
@@ -20,11 +18,7 @@ impl<T> Stack<T> {
     }
 
     pub fn push(&mut self, item: T) {
-        if self.len() != self.max_size {
-            self.stack.push(item);
-        } else {
-            panic!("Push to full stack")
-        }
+        self.stack.push(item);
     }
 
     pub fn last(&self) -> Option<&T> {
